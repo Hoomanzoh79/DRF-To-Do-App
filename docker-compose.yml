@@ -8,3 +8,6 @@ services:
       - .:/code
     ports:
       - 8000:8000
+    environment:
+      - "SECRET_KEY=django-insecure-=0+6c+mypx@7(*b4#5kw56_-!__b2@wmaxaya6@59m_je##2(w"
+      - "DEBUG=True"
