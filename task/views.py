@@ -1,6 +1,6 @@
 from django.views import generic
 from .models import Task
-from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class TaskListView(LoginRequiredMixin,generic.ListView):
     model = Task

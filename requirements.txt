@@ -5,3 +5,8 @@ python-decouple
 
 # 3rd party modules
 django_extensions
+
+# rest framework
+djangorestframework
+markdown
+django-filter

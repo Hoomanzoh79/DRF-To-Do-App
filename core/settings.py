@@ -42,6 +42,10 @@ INSTALLED_APPS = [
     # my apps
     'accounts',
     'task',
+
+    # rest framework
+    'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -129,5 +133,13 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# Custom User
 AUTH_USER_MODEL = 'accounts.User'
+
+# Rest Framework
+REST_FRAMEWORK = {
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    # ]
+ }
+

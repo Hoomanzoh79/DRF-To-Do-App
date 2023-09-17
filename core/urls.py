@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/',include('django.contrib.auth.urls')),
     path('task/',include('task.urls')),
+    # Browsable Api
+    path('api-auth/', include('rest_framework.urls')),
 ]
