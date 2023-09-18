@@ -2,6 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import TaskSerializer
 from task.models import Task
+from django.shortcuts import get_object_or_404
 
 
 @api_view(['GET','POST'])
@@ -15,4 +16,23 @@ def task_list(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
+
+@api_view(['GET','PUT','DELETE'])
+def task_detail(request,pk):
+    task = get_object_or_404(Task,id=pk,is_done=False)
+
+    if request.method == 'GET':
+        serializer = TaskSerializer(task)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        serializer = TaskSerializer(task,data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+    
+    if request.method == 'DELETE':
+        task.delete()
+        return Response({'detail':'task has been removed'})
     
