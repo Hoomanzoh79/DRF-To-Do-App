@@ -54,3 +54,23 @@ class TaskList(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
+
+class TaskDetail(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self,request,pk):
+        task = get_object_or_404(Task,id=pk,is_done=False)
+        serializer = TaskSerializer(task)
+        return Response(serializer.data)
+
+    def put(self,request,pk):
+        task = get_object_or_404(Task,id=pk,is_done=False)
+        serializer = TaskSerializer(task,data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+
+    def delete(self,request,pk):
+        task = get_object_or_404(Task,id=pk,is_done=False)
+        task.delete()
+        return Response({'detail':'task has been removed'})
