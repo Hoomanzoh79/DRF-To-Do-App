@@ -20,5 +20,5 @@ class TaskViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend,SearchFilter,OrderingFilter]
     filterset_fields = {'author':['exact','in']}
     search_fields = ['title']
-    ordering_fields = ['published_date']
+    ordering_fields = ['datetime_created']
     pagination_class = DefaultPagination
