@@ -14,9 +14,18 @@ from .paginations import DefaultPagination
 
 
 class TaskViewSet(viewsets.ModelViewSet):
-    permission_classes = [IsAuthenticated,IsOwnerPermission]
     serializer_class = TaskSerializer
     queryset = Task.objects.filter(is_done=False)
+
+    # def get_queryset(self,*args, **kwargs):
+
+    #     return (
+    #         super()
+    #         .get_queryset(*args, **kwargs)
+    #         .filter(user = self.request.user)
+    #     )
+    
+    permission_classes = [IsAuthenticated,IsOwnerPermission]
     filter_backends = [DjangoFilterBackend,SearchFilter,OrderingFilter]
     filterset_fields = {'author':['exact','in']}
     search_fields = ['title']

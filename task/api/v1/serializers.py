@@ -28,5 +28,5 @@ class TaskSerializer(serializers.ModelSerializer):
             rep.pop('absolute_url',None)
         else:
             rep.pop('is_done',None)
-        
+
         return rep
