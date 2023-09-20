@@ -1,7 +1,10 @@
 {
     "cSpell.words": [
         "Browsable",
+        "coreapi",
         "paginations",
-        "viewsets"
+        "redoc",
+        "viewsets",
+        "yasg"
     ]
 }
