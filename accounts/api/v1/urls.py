@@ -20,7 +20,7 @@ urlpatterns = [
     #jwt token verify
     path('jwt/verify/', TokenVerifyView.as_view(), name='jwt-verify'),
     # change password
-
+    path('password/change/',views.ChangePasswordApiView.as_view(),name='password-change'),
     # profile page
 
     # reset password
