@@ -8,7 +8,7 @@ urlpatterns = [
     # token login
     path('token/login/',views.TokenLoginApiView.as_view(),name='token-login'),
     # token logout
-
+    path('token/logout/',views.TokenDiscardApiView.as_view(),name='token-logout'),
     # jwt token login
 
     # change password
