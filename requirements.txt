@@ -1,14 +1,15 @@
 # general modules
 django >3.2,<3.3
-python-decouple
 
 # 3rd party modules
 markdown
 django-filter
+python-decouple
 
 
 # rest framework
 djangorestframework
+djangorestframework-simplejwt
 
 # documentation
 coreapi

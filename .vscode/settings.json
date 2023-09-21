@@ -5,6 +5,7 @@
         "coreapi",
         "paginations",
         "redoc",
+        "simplejwt",
         "viewsets",
         "yasg"
     ]
