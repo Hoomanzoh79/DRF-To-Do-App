@@ -1,6 +1,6 @@
 from typing import Any, Dict
 from rest_framework import serializers
-from accounts.models import User
+from accounts.models import User,Profile
 from django.core import exceptions
 from django.contrib.auth.password_validation import validate_password
 from rest_framework.authtoken.serializers import AuthTokenSerializer
@@ -88,7 +88,9 @@ class ChangePasswordSerializer(serializers.Serializer):
         return super().validate(attrs)
     
 
+class ProfileSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(source='user.email',read_only=True)
 
-
-
-    
+    class Meta:
+        model = Profile
+        fields = ('id','email','first_name','last_name','bio')
