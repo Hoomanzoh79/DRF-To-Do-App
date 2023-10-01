@@ -7,13 +7,27 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     # registration
-    path("registration/", views.RegistrationApiView.as_view(), name="registration"),
+    path(
+        "registration/",
+        views.RegistrationApiView.as_view(),
+        name="registration",
+    ),
     # token login
-    path("token/login/", views.TokenLoginApiView.as_view(), name="token-login"),
+    path(
+        "token/login/", views.TokenLoginApiView.as_view(), name="token-login"
+    ),
     # token logout
-    path("token/logout/", views.TokenDiscardApiView.as_view(), name="token-logout"),
+    path(
+        "token/logout/",
+        views.TokenDiscardApiView.as_view(),
+        name="token-logout",
+    ),
     # jwt token login
-    path("jwt/create/", views.CustomTokenObtainPairView.as_view(), name="jwt-create"),
+    path(
+        "jwt/create/",
+        views.CustomTokenObtainPairView.as_view(),
+        name="jwt-create",
+    ),
     # jwt token refresh
     path("jwt/refresh/", TokenRefreshView.as_view(), name="jwt-refresh"),
     # jwt token verify
