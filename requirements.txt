@@ -14,3 +14,7 @@ djangorestframework-simplejwt
 # documentation
 coreapi
 drf-yasg[validation]
+
+# refactoring and tests
+pytest
+pytest-django
