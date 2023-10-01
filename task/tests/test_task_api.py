@@ -1,11 +1,17 @@
 import pytest
 from rest_framework.test import APIClient
 from django.urls import reverse
+from accounts.models import User
 
 @pytest.fixture
 def api_client():
     client = APIClient()
     return client
+
+@pytest.fixture
+def common_user():
+    user = User.objects.create_user(email='test@test.com',Password='Aa@1234%')
+    return user
 
 @pytest.mark.django_db
 class TestTaskApi:
