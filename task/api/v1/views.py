@@ -4,7 +4,7 @@ from .serializers import TaskSerializer
 from task.models import Task
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
 from rest_framework import viewsets
 from .permissions import IsOwnerPermission
@@ -25,7 +25,7 @@ class TaskViewSet(viewsets.ModelViewSet):
     #         .filter(user = self.request.user)
     #     )
     
-    permission_classes = [IsAuthenticated,IsOwnerPermission]
+    permission_classes = [IsAuthenticatedOrReadOnly,IsOwnerPermission]
     filter_backends = [DjangoFilterBackend,SearchFilter,OrderingFilter]
     filterset_fields = {'author':['exact','in']}
     search_fields = ['title']
