@@ -18,3 +18,5 @@ drf-yasg[validation]
 # refactoring and tests
 pytest
 pytest-django
+black
+flake8
