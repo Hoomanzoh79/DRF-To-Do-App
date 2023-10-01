@@ -13,3 +13,12 @@ class TestTaskApi:
         url = reverse('task:api-v1:task-list')
         response = api_client.get(url)
         assert response.status_code == 200
+    
+    def test_post_task_response_unauthorized_status_401(self,api_client):
+        url = reverse('task:api-v1:task-list')
+        data = {
+            'title':'Go to the gym',
+            'is_done':False,
+        }
+        response = api_client.post(url,data)
+        assert response.status_code == 401
