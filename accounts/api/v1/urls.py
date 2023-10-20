@@ -13,9 +13,7 @@ urlpatterns = [
         name="registration",
     ),
     # token login
-    path(
-        "token/login/", views.TokenLoginApiView.as_view(), name="token-login"
-    ),
+    path("token/login/", views.TokenLoginApiView.as_view(), name="token-login"),
     # token logout
     path(
         "token/logout/",
