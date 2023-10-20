@@ -5,6 +5,7 @@ django >3.2,<3.3
 markdown
 django-filter
 python-decouple
+Faker
 
 
 # rest framework
