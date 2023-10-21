@@ -11,3 +11,17 @@ services:
     environment:
       - "SECRET_KEY=django-insecure-=0+6c+mypx@7(*b4#5kw56_-!__b2@wmaxaya6@59m_je##2(w"
       - "DEBUG=True"
+    
+  master:
+    image: locustio/locust
+    ports:
+     - "8089:8089"
+    volumes:
+      - ./core/locust:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --master -H http://web:8000
+  
+  locust-worker:
+    image: locustio/locust
+    volumes:
+      - ./core/locust:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --worker --master-host master
