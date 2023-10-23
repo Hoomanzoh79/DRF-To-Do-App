@@ -12,3 +12,4 @@ class QuickstartUser(HttpUser):
     @task
     def task_list(self):
         self.client.get("/task/api/v1/task/")
+    
