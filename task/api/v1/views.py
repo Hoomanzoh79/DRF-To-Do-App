@@ -28,7 +28,7 @@ class TaskViewSet(viewsets.ModelViewSet):
     #         .filter(user = self.request.user)
     #     )
 
-    permission_classes = [IsAuthenticatedOrReadOnly, IsOwnerPermission]
+    permission_classes = [IsAuthenticatedOrReadOnly,IsOwnerPermission]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = {"author": ["exact", "in"]}
     search_fields = ["title"]
