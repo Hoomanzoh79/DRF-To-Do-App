@@ -153,3 +153,7 @@ REST_FRAMEWORK = {
     # Documentation
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
+
+
+# celery configs
+CELERY_BROKER_URL = 'redis://redis:6379/1'
