@@ -1,6 +1,14 @@
 version: '3.9'
 
 services:
+  redis:
+    container_name: ToDoApp-redis
+    image: redis
+    restart: always
+    ports:
+    -  "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+
   web:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
