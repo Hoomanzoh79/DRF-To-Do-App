@@ -10,15 +10,25 @@ services:
     command: redis-server --save 60 1 --loglevel warning
 
   web:
-    build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    build: . 
+    container_name: web
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./core:/app/
     ports:
-      - 8000:8000
+      - "8000:8000"
     environment:
-      - "SECRET_KEY=django-insecure-=0+6c+mypx@7(*b4#5kw56_-!__b2@wmaxaya6@59m_je##2(w"
-      - "DEBUG=True"
+      - "SECRET_KEY=${DOCKER_COMPOSE_SECRET_KEY}"
+      - "DEBUG=${DOCKER_COMPOSE_DEBUG}"
+    depends_on:
+      - redis
+    
+  worker:
+    build: .
+    command: celery -A core worker --loglevel=info
+    depends_on:
+      - redis
+      - web
     
   master:
     image: locustio/locust
@@ -26,7 +36,7 @@ services:
      - "8089:8089"
     volumes:
       - ./core/locust:/mnt/locust
-    command: -f /mnt/locust/locustfile.py --master -H http://web:8000
+    command: -f /mnt/locust/locustfile.py --master -H http://backend:8000
   
   locust-worker:
     image: locustio/locust
