@@ -4,7 +4,7 @@ django >3.2,<3.3
 # 3rd party modules
 markdown
 django-filter
-python-decouple
+environs
 Faker
 
 
